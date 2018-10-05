@@ -18,7 +18,7 @@ test:
   stage: test
   script:
     - echo "starting tests"
-    - dir /s /b *.Tests.dll | findstr /r Tests\\*\\bin\\ > testcontainers.txt
-    - 'for /f %%f in (testcontainers.txt) do mstest.exe /testcontainer:"%%f"'
+    - cd %PROJECT_NAME%Tests/bin/Release
+    - vstest.console %PROJECT_NAME%Tests.dll
   dependencies:
     - build
